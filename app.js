@@ -50,3 +50,42 @@ var error = function () {
     throw Error('ooops');
     // return 'hello';
 };
+var fightRobotArmy = function (robots) {
+    console.log('FIGHT');
+};
+fightRobotArmy({ count: 1, type: 'dragon' });
+var fightRobotArmy2 = function (robots) {
+    console.log('FIGHT');
+};
+var dog = {};
+dog.count;
+//! Function
+var fightRobotArmy3 = function (robots) {
+    console.log('FIGHT');
+};
+var fightRobotArmy4 = function (robots) {
+    console.log('FIGHT');
+    return 5;
+};
+//! Classes
+var Animal = /** @class */ (function () {
+    function Animal(sound) {
+        // private sing: string = 'lallalala';
+        this.sing = 'lallalala';
+        this.sing = sound;
+    }
+    Animal.prototype.greet = function () {
+        return "Hello, ".concat(this.sing, "!");
+    };
+    return Animal;
+}());
+var lion = new Animal('RAAAAWWWWR');
+lion.sing;
+//! Union
+var confused = 'hello';
+confused = 5;
+confused = true;
+// confused = null;
+//! Automatic
+var x = 4;
+// x = '5';
