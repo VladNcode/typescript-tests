@@ -24,5 +24,5 @@ interface IDeletable {
 class User4 implements IPayable, IDeletable {
 	delete(): void {}
 	pay(paymentId: number): void {}
-	price?: number | undefined;
+	price?: number;
 }
