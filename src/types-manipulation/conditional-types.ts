@@ -1,73 +1,45 @@
 const aaa: number = Math.random() > 0.5 ? 1 : 0;
 
-function first(n: number) {
-	console.log(n);
-	console.log('first(): factory evaluated');
-	return function (target: any, propertyKey: string) {
-		console.log('\x1b[34m%s\x1b[0m', 'First_1 :', this);
-		console.log('\x1b[34m%s\x1b[0m', 'First_2 :', target);
-		console.log('\x1b[34m%s\x1b[0m', 'First_3 :', propertyKey);
-		console.log('first(): called');
-
-		let value: any;
-		const get = function () {
-			console.log('\x1b[32m%s\x1b[0m', 'getter_+ :', this);
-			return value;
-		};
-		const set = function (n: number) {
-			if (n < n) {
-				console.log('\x1b[35m%s\x1b[0m', 'Short');
-				return;
-			}
-			value = n;
-			console.log('\x1b[32m%s\x1b[0m', 'setter_+:', value);
-		};
-
-		Object.defineProperty(target, propertyKey, { set, get });
-		Object.defineProperties(target, { propertyKey: { set, get } });
-	};
+interface HTTPResponse<T extends 'success' | 'failed'> {
+	code: number;
+	data: T extends 'success' ? string : Error;
 }
 
-function second(n: number) {
-	console.log(n);
-	console.log('second(): factory evaluated');
-	return function (target: any, propertyKey: string) {
-		console.log('\x1b[33m%s\x1b[0m', 'Second_1 :', this);
-		console.log('\x1b[33m%s\x1b[0m', 'Second_2 :', target);
-		console.log('\x1b[33m%s\x1b[0m', 'Second_3 :', propertyKey);
-		console.log('second(): called');
+const success: HTTPResponse<'success'> = {
+	code: 200,
+	data: 'Success',
+};
 
-		let value: any;
-		const get = function () {
-			console.log('\x1b[32m%s\x1b[0m', 'getter_+ :', this);
-			return value;
-		};
-		const set = function (n: number) {
-			if (n < n) {
-				console.log('\x1b[35m%s\x1b[0m', 'Short');
-				return;
-			}
-			value = n;
-			console.log('\x1b[32m%s\x1b[0m', 'setter_+:', value);
-		};
+const err: HTTPResponse<'failed'> = {
+	code: 200,
+	data: new Error('Failed'),
+};
 
-		Object.defineProperty(target, 'asdasd', { set, get });
-		Object.defineProperties(target, { asd: { set, get } });
-	};
+class Userrr {
+	id: number;
+	name: string;
 }
 
-class ExampleClass {
-	@first(1)
-	@second(5)
-	method: string;
+class UserrrPersistent extends Userrr {
+	dbId: string;
+}
 
-	constructor(method: string) {
-		this.method = method;
+function findUser<T>(dbId: string): UserrrPersistent;
+function findUser<T>(id: number): Userrr;
+function findUser<T>(dbIdOrId: T extends Userrr ? number : string): Userrr | UserrrPersistent {
+	if (typeof dbIdOrId === 'string') {
+		return new UserrrPersistent();
+	} else {
+		return new Userrr();
 	}
-
-	test(a: string, b: number) {}
 }
 
-const test = new ExampleClass('asd').method;
+const userrrr = findUser<UserrrPersistent>(5);
 
-console.log(test);
+type UserOrUserPersistent<T extends string | number> = T extends string ? UserrrPersistent : Userrr;
+
+function findUser2<T extends string | number>(id: T): UserOrUserPersistent<T> {
+	return id === 'number' ? (new Userrr() as UserOrUserPersistent<T>) : new UserrrPersistent();
+}
+
+const userrrr2 = findUser2('asd');
