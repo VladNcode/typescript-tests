@@ -2,5 +2,6 @@ node_modules
 recRevStr.js
 dist
 test.js
+test.ts
 test2.ts
 test2.js
