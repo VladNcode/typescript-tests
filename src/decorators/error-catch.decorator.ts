@@ -18,7 +18,6 @@ function CatchErr(data: { rethrow: boolean } = { rethrow: false }) {
 
 		descriptor.value = async (...args: any[]) => {
 			try {
-				// TODO
 				// return await oldValue?.apply(target, args);
 				if (oldValue !== undefined) return await oldValue();
 			} catch (e) {
