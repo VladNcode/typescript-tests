@@ -32,6 +32,9 @@ function Positive() {
 		existParams.push(parameterIndex);
 
 		Reflect.defineMetadata(POSITIVE_METADATA_KEY, existParams, target, propertyKey);
+
+		// console.log(UserServ);
+		// console.log(Reflect.getOwnMetadata(POSITIVE_METADATA_KEY, target, propertyKey));
 	};
 }
 
@@ -50,6 +53,8 @@ function Validate() {
 				target,
 				propertyKey,
 			);
+
+			console.log(Reflect.getMetadataKeys(target));
 
 			// console.log(positiveParams);
 			if (args.length) {
@@ -79,4 +84,4 @@ function Validate() {
 const usssrrrr = new UserServ();
 
 console.log(usssrrrr.setUsersInDatabase(10, 50));
-console.log(usssrrrr.setUsersInDatabase(25, -1));
+// console.log(usssrrrr.setUsersInDatabase(25, -1));
