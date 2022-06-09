@@ -7,7 +7,7 @@ class User5 {
 }
 
 class Admin extends User5 {
-	name: string = 'admin';
+	override name: string = 'admin';
 
 	constructor() {
 		super();

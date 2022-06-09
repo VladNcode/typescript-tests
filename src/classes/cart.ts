@@ -7,7 +7,7 @@ class Delivery {
 }
 
 class HomeDelivery extends Delivery {
-	constructor(public date: Date, public address: string) {
+	constructor(public override date: Date, public address: string) {
 		super(date);
 	}
 }

@@ -12,7 +12,7 @@ class Abstraction {
 }
 
 class ExtendedAbstraction extends Abstraction {
-	public operation(): string {
+	override operation(): string {
 		const result = this.implementation.operationImplementation();
 		return `ExtendedAbstraction: Extended operation with:\n${result}`;
 	}

@@ -18,7 +18,7 @@ class Adapter extends Target {
 		this.adaptee = adaptee;
 	}
 
-	public request(): string {
+	override request(): string {
 		const result = this.adaptee.specificRequest().split('').reverse().join('');
 		return `Adapter: (TRANSLATED) ${result}`;
 	}
