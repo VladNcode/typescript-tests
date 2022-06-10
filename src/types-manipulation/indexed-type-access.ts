@@ -14,7 +14,7 @@ interface Userr {
 
 const userr2: Userr = { name: 'John', roles: [], permission: { endDate: new Date() } };
 
-const userNamee = user['name'];
+const userNamee = userr2['name'];
 
 type rolesType = Userr['roles'];
 type DateType = Userr['permission']['endDate'];

@@ -27,7 +27,7 @@ function Max(max: number) {
 		let setter = (newValue: number) => {
 			if (newValue > max)
 				throw new Error(chalk.bgRed.black(`Number is higher than ${chalk.bgYellow.black(max)}!`));
-			value = x;
+			value = newValue;
 		};
 
 		Object.defineProperty(target, propertyKey, {

@@ -24,12 +24,12 @@ class Payment2 {
 	date: Date;
 }
 
-class UserWithPayment extends Payment {
+class UserWithPayment extends Payment2 {
 	name: string;
 }
 
 class UserWithPayment2 {
-	constructor(public user: User6, public payment: Payment) {}
+	constructor(public user: User6, public payment: Payment2) {}
 }
 
 const users = new Users();
