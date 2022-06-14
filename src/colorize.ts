@@ -28,5 +28,5 @@ export const col = {
 	white: (...args: any) => `\x1b[47m${`\x1b[30m${args.join(' ')}`}\x1b[0m`,
 };
 
-console.log(colorize('Hello').green);
-console.log('hello 2');
+// console.log(colorize('Hello').green);
+// console.log('hello 2');
